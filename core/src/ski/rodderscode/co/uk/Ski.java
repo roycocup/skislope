@@ -14,7 +14,6 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 public class Ski extends ApplicationAdapter {
-	String assetsPrefix = "";
 	OrthographicCamera camera; 
 	Viewport viewport; 
 	World world; 
@@ -22,10 +21,10 @@ public class Ski extends ApplicationAdapter {
 	
 	SpriteBatch batch;
 	
-	Player player; 
+	Player player;
+	Slope slope;
 	
 	void init(){
-		
 		Gdx.graphics.setTitle("Ski Slow Down");
 		
 		int w = 800, h = 600; 
@@ -42,6 +41,7 @@ public class Ski extends ApplicationAdapter {
 	public void create () {
 		init();
 		player = new Player(this);
+		slope = new Slope(this);
 	}
 
 	@Override

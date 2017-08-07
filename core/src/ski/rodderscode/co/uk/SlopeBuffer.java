@@ -1,0 +1,65 @@
+package ski.rodderscode.co.uk;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Vector2;
+
+import java.util.ArrayList;
+import java.util.Random;
+
+public class SlopeBuffer implements iGameObject{
+
+    Ski g;
+    int width, height;
+    Vector2 pos = new Vector2(0,0);
+    ArrayList<Tree> trees = new ArrayList<Tree>();
+    ShapeRenderer sr = new ShapeRenderer();
+
+    SlopeBuffer(Ski g, int x, int y){
+        this.g = g;
+        width = Gdx.graphics.getWidth();
+        height = Gdx.graphics.getHeight();
+        pos.x = x;
+        pos.y = y;
+        Random rand = new Random();
+
+        // trees
+        for(int i = 0; i < rand.nextInt(10)+1; i++){
+            Tree t = new Tree(g, Tree.Type.tree1);
+            t.pos.x = rand.nextInt(Gdx.graphics.getWidth()-1);
+            t.pos.y = rand.nextInt(Gdx.graphics.getHeight()-1);
+            trees.add(t);
+        }
+    }
+
+    @Override
+    public void update() {
+
+    }
+
+    @Override
+    public void draw() {
+        g.batch.end();
+        sr.begin(ShapeRenderer.ShapeType.Filled);
+        sr.setColor(1,1,1,.1f);
+        sr.rect(pos.x, pos.y, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        sr.end();
+        g.batch.begin();
+        Texture i = new Texture("Tree1.png");
+        g.batch.draw(i, 100, 100);
+        for(Tree t : trees){
+            t.draw();
+        }
+    }
+
+    @Override
+    public void dispose() {
+        sr.dispose();
+    }
+
+    @Override
+    public void listen(Object notification) {
+
+    }
+}

@@ -14,7 +14,7 @@ public class Player implements iGameObject {
 	Player(Ski g){
 		this.g = g;
 		g.registerObject(this);
-		skier = new Texture(g.assetsPrefix + "Skier-down.png");
+		skier = new Texture("Skier-down.png");
 		pos.x = Gdx.graphics.getWidth() / 2; 
 		pos.y = Gdx.graphics.getHeight() - skier.getHeight();
 	}

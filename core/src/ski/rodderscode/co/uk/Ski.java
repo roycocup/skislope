@@ -21,15 +21,11 @@ public class Ski extends ApplicationAdapter {
 	ArrayList<iGameObject> registeredGameObjects = new ArrayList<iGameObject>(); 
 	
 	SpriteBatch batch;
-	Texture img;
 	
 	Player player; 
 	
 	void init(){
 		
-		if (Gdx.app.getType().toString() == "Desktop"){
-			assetsPrefix = "assets/";
-		}
 		Gdx.graphics.setTitle("Ski Slow Down");
 		
 		int w = 800, h = 600; 

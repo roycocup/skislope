@@ -45,11 +45,12 @@ public class Ski extends ApplicationAdapter {
 	public void create () {
 		init();
 
-		player = new Player(this);
+        slope = new Slope(this);
+        stage.addActor(slope);
+
+        player = new Player(this);
 		stage.addActor(player);
 
-		slope = new Slope(this);
-		stage.addActor(slope);
 	}
 
 	@Override
@@ -96,12 +97,7 @@ public class Ski extends ApplicationAdapter {
         if(Gdx.input.isKeyPressed(Input.Keys.UP)){
             moveCamera(0,-speed);
         }
-        if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
-            moveCamera(-speed,0);
-        }
-        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
-            moveCamera(speed,0);
-        }
+
     }
 
 	void moveCamera(int x, int y){

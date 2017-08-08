@@ -23,26 +23,14 @@ public class Tree extends Actor  {
         }
     }
 
-
-    public void update() {
+    @Override
+    public void act(float delta){
 
     }
-
 
     @Override
     public void draw(Batch batch, float alpha) {
-//        g.batch.begin();
         g.batch.draw(img, pos.x, pos.y);
-//        g.batch.end();
     }
 
-
-    public void dispose() {
-        img.dispose();
-    }
-
-
-    public void listen(NotificationObject notification) {
-
-    }
 }

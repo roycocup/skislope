@@ -73,6 +73,7 @@ public class Ski extends ApplicationAdapter {
 	@Override
 	public void dispose () {
 		batch.dispose();
+		stage.dispose();
 	}
 
 

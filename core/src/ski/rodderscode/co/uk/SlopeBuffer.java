@@ -15,11 +15,11 @@ public class SlopeBuffer extends Actor {
 
     Ski g;
     int width, height;
-    Vector2 pos = new Vector2(0,0);
+    Vector2 pos = new Vector2(0, 0);
     ArrayList<Tree> trees = new ArrayList<Tree>();
     ShapeRenderer sr = new ShapeRenderer();
 
-    SlopeBuffer(Ski g, int x, int y){
+    SlopeBuffer(Ski g, int x, int y) {
         this.g = g;
         width = Gdx.graphics.getWidth();
         height = Gdx.graphics.getHeight();
@@ -28,14 +28,18 @@ public class SlopeBuffer extends Actor {
         Random rand = new Random();
 
         // trees
-        for(int i = 0; i < rand.nextInt(10)+1; i++){
+        for (int i = 0; i < rand.nextInt(10) + 1; i++) {
             Tree t = new Tree(g, Tree.Type.tree1);
-            t.pos.x = rand.nextInt(Gdx.graphics.getWidth()-1);
-            t.pos.y = rand.nextInt(Gdx.graphics.getHeight()-1);
+            t.pos.x = rand.nextInt(Gdx.graphics.getWidth() - 1);
+            t.pos.y = rand.nextInt(Gdx.graphics.getHeight() - 1);
             trees.add(t);
         }
     }
 
+    @Override
+    public void act(float delta){
+
+    }
 
     @Override
     public void draw(Batch batch, float alpha) {
@@ -43,23 +47,17 @@ public class SlopeBuffer extends Actor {
         batch.end();
         sr.setProjectionMatrix(g.camera.combined);
         sr.begin(ShapeRenderer.ShapeType.Filled);
-        sr.setColor(1,1,1,.1f);
+        sr.setColor(1, 1, 1, .1f);
         sr.rect(pos.x, pos.y, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         sr.end();
 
         batch.begin();
-        for(Tree t : trees){
+        for (Tree t : trees) {
             t.draw(batch, alpha);
         }
 
     }
 
-
-    public void dispose() {
-        sr.dispose();
-    }
-
-    public void listen(NotificationObject notification) {
-
-    }
 }
+
+

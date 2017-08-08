@@ -39,11 +39,6 @@ public class Player extends Actor {
     }
 
 
-    public void dispose() {
-        skier.dispose();
-    }
-
-
     void inputListen(){
         int speed = 3;
 

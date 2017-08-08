@@ -2,6 +2,7 @@ package ski.rodderscode.co.uk;
 
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
@@ -28,10 +29,11 @@ public class Tree extends Actor  {
     }
 
 
-    public void draw() {
-        g.batch.begin();
+    @Override
+    public void draw(Batch batch, float alpha) {
+//        g.batch.begin();
         g.batch.draw(img, pos.x, pos.y);
-        g.batch.end();
+//        g.batch.end();
     }
 
 

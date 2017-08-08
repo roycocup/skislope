@@ -3,6 +3,7 @@ package ski.rodderscode.co.uk;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
@@ -36,21 +37,19 @@ public class SlopeBuffer extends Actor {
     }
 
 
-    public void update() {
+    @Override
+    public void draw(Batch batch, float alpha) {
 
-    }
-
-
-    public void draw() {
-
+        batch.end();
         sr.setProjectionMatrix(g.camera.combined);
         sr.begin(ShapeRenderer.ShapeType.Filled);
         sr.setColor(1,1,1,.1f);
         sr.rect(pos.x, pos.y, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         sr.end();
 
+        batch.begin();
         for(Tree t : trees){
-            t.draw();
+            t.draw(batch, alpha);
         }
 
     }

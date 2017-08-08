@@ -2,6 +2,7 @@ package ski.rodderscode.co.uk;
 
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import java.util.ArrayList;
@@ -25,23 +26,25 @@ public class Slope extends Actor {
 		buffers.add(prev);
 		buffers.add(cur);
 		buffers.add(next);
+
+        g.stage.addActor(prev);
+        g.stage.addActor(cur);
+        g.stage.addActor(next);
 	}
 
 
 
+    @Override
+	public void act(float delta){
 
-	public void update() {
-	}
+    }
 
-
-	public void draw() {
+    @Override
+	public void draw(Batch batch, float alpha) {
 		for(SlopeBuffer b : buffers){
-			b.draw();
+			b.draw(batch, alpha);
 		}
 	}
 
 	public void dispose() {}
-
-
-	public void listen(NotificationObject notification) {}
 }

@@ -2,20 +2,18 @@ package ski.rodderscode.co.uk;
 
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import java.util.ArrayList;
 
-public class Slope extends Actor implements iGameObject {
+public class Slope extends Actor {
 
 	Ski g;
 	ArrayList<SlopeBuffer> buffers = new ArrayList<SlopeBuffer>();
 
 
 	Slope(Ski g){
-		this.g = g; 
-		g.registerObject(this);
+		this.g = g;
 		initSlopes();
 	}
 
@@ -31,21 +29,19 @@ public class Slope extends Actor implements iGameObject {
 
 
 
-	@Override
+
 	public void update() {
-		//if(g.camera.position.y > buffers.get(1))
 	}
 
-	@Override
+
 	public void draw() {
 		for(SlopeBuffer b : buffers){
 			b.draw();
 		}
 	}
 
-	@Override
 	public void dispose() {}
 
-	@Override
+
 	public void listen(NotificationObject notification) {}
 }

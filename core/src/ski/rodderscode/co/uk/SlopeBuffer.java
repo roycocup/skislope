@@ -5,11 +5,12 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-public class SlopeBuffer implements iGameObject{
+public class SlopeBuffer extends Actor {
 
     Ski g;
     int width, height;
@@ -34,12 +35,12 @@ public class SlopeBuffer implements iGameObject{
         }
     }
 
-    @Override
+
     public void update() {
 
     }
 
-    @Override
+
     public void draw() {
 
         sr.setProjectionMatrix(g.camera.combined);
@@ -54,12 +55,11 @@ public class SlopeBuffer implements iGameObject{
 
     }
 
-    @Override
+
     public void dispose() {
         sr.dispose();
     }
 
-    @Override
     public void listen(NotificationObject notification) {
 
     }

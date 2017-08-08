@@ -7,10 +7,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
@@ -85,7 +85,7 @@ public class Ski extends ApplicationAdapter {
 		registeredGameObjects.clear();
 	}
 	
-	public void notifyListeners(Object notification){
+	public void notifyListeners(NotificationObject notification){
 		for(iGameObject o : registeredGameObjects){
 			o.listen(notification);
 		}
@@ -93,16 +93,23 @@ public class Ski extends ApplicationAdapter {
 
 	void inputListen(){
 		int speed = 3;
+		Json json = new Json();
+
+
 		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
+			notifyListeners(new NotificationObject("keydown", String.valueOf(Input.Keys.DOWN)));
 			moveCamera(0,speed);
 		}
 		if(Gdx.input.isKeyPressed(Input.Keys.UP)){
+			notifyListeners(new NotificationObject("keydown", String.valueOf(Input.Keys.UP)));
 			moveCamera(0,-speed);
 		}
 		if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
+			notifyListeners(new NotificationObject("keydown", String.valueOf(Input.Keys.LEFT)));
 			moveCamera(-speed,0);
 		}
 		if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
+			notifyListeners(new NotificationObject("keydown", String.valueOf(Input.Keys.RIGHT)));
 			moveCamera(speed,0);
 		}
 	}

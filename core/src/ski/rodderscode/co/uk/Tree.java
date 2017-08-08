@@ -40,7 +40,7 @@ public class Tree implements iGameObject {
     }
 
     @Override
-    public void listen(Object notification) {
+    public void listen(NotificationObject notification) {
 
     }
 }

@@ -7,6 +7,6 @@ public interface iGameObject {
 	void update();
 	void draw();
 	void dispose();
-	void listen(Object notification);
+	void listen(NotificationObject notification);
 
 }

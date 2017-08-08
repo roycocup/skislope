@@ -46,5 +46,5 @@ public class Slope implements iGameObject {
 	public void dispose() {}
 
 	@Override
-	public void listen(Object notification) {}
+	public void listen(NotificationObject notification) {}
 }

@@ -26,7 +26,9 @@ public class Player implements iGameObject {
 
 	@Override
 	public void draw() {
+		g.batch.begin();
 		g.batch.draw(skier, pos.x, pos.y);
+		g.batch.end();
 	}
 
 	@Override

@@ -19,9 +19,9 @@ public class Slope implements iGameObject {
 	}
 
 	private void initSlopes() {
-		SlopeBuffer prev = new SlopeBuffer(g, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+		SlopeBuffer prev = new SlopeBuffer(g, 0, Gdx.graphics.getHeight());
 		SlopeBuffer cur = new SlopeBuffer(g, 0,0);
-		SlopeBuffer next = new SlopeBuffer(g, -1 * Gdx.graphics.getWidth(), -1 * Gdx.graphics.getHeight());
+		SlopeBuffer next = new SlopeBuffer(g, 0, -1 * Gdx.graphics.getHeight());
 
 		buffers.add(prev);
 		buffers.add(cur);
@@ -32,7 +32,7 @@ public class Slope implements iGameObject {
 
 	@Override
 	public void update() {
-
+		//if(g.camera.position.y > buffers.get(1))
 	}
 
 	@Override

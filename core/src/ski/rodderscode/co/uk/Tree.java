@@ -29,7 +29,9 @@ public class Tree implements iGameObject {
 
     @Override
     public void draw() {
+        g.batch.begin();
         g.batch.draw(img, pos.x, pos.y);
+        g.batch.end();
     }
 
     @Override

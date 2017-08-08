@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -56,16 +57,16 @@ public class Ski extends ApplicationAdapter {
 		for(iGameObject o : registeredGameObjects){
 			o.update();
 		}
+		inputListen();
 	}
 	
 	void draw(){
-		batch.begin();
-		
+		batch.setProjectionMatrix(camera.combined);
+
 		for(iGameObject o : registeredGameObjects){
 			o.draw();
 		}
-		
-		batch.end();
+
 	}
 	
 	@Override
@@ -88,5 +89,26 @@ public class Ski extends ApplicationAdapter {
 		for(iGameObject o : registeredGameObjects){
 			o.listen(notification);
 		}
+	}
+
+	void inputListen(){
+		int speed = 3;
+		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
+			moveCamera(0,speed);
+		}
+		if(Gdx.input.isKeyPressed(Input.Keys.UP)){
+			moveCamera(0,-speed);
+		}
+		if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
+			moveCamera(-speed,0);
+		}
+		if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
+			moveCamera(speed,0);
+		}
+	}
+
+	void moveCamera(int x, int y){
+		camera.translate(x, y);
+		camera.update();
 	}
 }

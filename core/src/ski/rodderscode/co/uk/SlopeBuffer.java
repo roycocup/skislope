@@ -1,6 +1,7 @@
 package ski.rodderscode.co.uk;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
@@ -40,17 +41,17 @@ public class SlopeBuffer implements iGameObject{
 
     @Override
     public void draw() {
-        g.batch.end();
+
+        sr.setProjectionMatrix(g.camera.combined);
         sr.begin(ShapeRenderer.ShapeType.Filled);
         sr.setColor(1,1,1,.1f);
         sr.rect(pos.x, pos.y, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         sr.end();
-        g.batch.begin();
-        Texture i = new Texture("Tree1.png");
-        g.batch.draw(i, 100, 100);
+
         for(Tree t : trees){
             t.draw();
         }
+
     }
 
     @Override

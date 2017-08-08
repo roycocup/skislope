@@ -1,6 +1,7 @@
 package ski.rodderscode.co.uk;
 
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -10,16 +11,18 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 
 public class Ski extends ApplicationAdapter {
+	Logger logger = Logger.getAnonymousLogger();
 	OrthographicCamera camera; 
 	Viewport viewport; 
-	World world; 
+	World world;
 	ArrayList<iGameObject> registeredGameObjects = new ArrayList<iGameObject>(); 
-	
+
 	SpriteBatch batch;
 	
 	Player player;
@@ -32,7 +35,7 @@ public class Ski extends ApplicationAdapter {
 		camera = new OrthographicCamera(w,h);
 		viewport = new FitViewport(w,h,camera);
 		viewport.apply();
-		
+
 		batch = new SpriteBatch();
 		camera.position.set(camera.viewportWidth/2,camera.viewportHeight/2,0);
 		world = new World(new Vector2(0, -98f), true);
@@ -93,23 +96,17 @@ public class Ski extends ApplicationAdapter {
 
 	void inputListen(){
 		int speed = 3;
-		Json json = new Json();
-
 
 		if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
-			notifyListeners(new NotificationObject("keydown", String.valueOf(Input.Keys.DOWN)));
 			moveCamera(0,speed);
 		}
 		if(Gdx.input.isKeyPressed(Input.Keys.UP)){
-			notifyListeners(new NotificationObject("keydown", String.valueOf(Input.Keys.UP)));
 			moveCamera(0,-speed);
 		}
 		if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
-			notifyListeners(new NotificationObject("keydown", String.valueOf(Input.Keys.LEFT)));
 			moveCamera(-speed,0);
 		}
 		if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
-			notifyListeners(new NotificationObject("keydown", String.valueOf(Input.Keys.RIGHT)));
 			moveCamera(speed,0);
 		}
 	}

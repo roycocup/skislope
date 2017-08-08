@@ -3,10 +3,11 @@ package ski.rodderscode.co.uk;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 
 import java.util.ArrayList;
 
-public class Slope implements iGameObject {
+public class Slope extends Actor implements iGameObject {
 
 	Ski g;
 	ArrayList<SlopeBuffer> buffers = new ArrayList<SlopeBuffer>();

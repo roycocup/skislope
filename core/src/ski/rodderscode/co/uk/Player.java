@@ -40,19 +40,17 @@ public class Player extends Actor {
 
 
     void inputListen(){
-        int speed = 3;
-
         if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
-            pos.y -= speed;
+            pos.y -= g.slopeSpeed;
         }
         if(Gdx.input.isKeyPressed(Input.Keys.UP)){
-            pos.y += speed;
+            pos.y += g.slopeSpeed;
         }
         if(Gdx.input.isKeyPressed(Input.Keys.LEFT)){
-            pos.x -= speed;
+            pos.x -= g.slopeSpeed;
         }
         if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)){
-            pos.x += speed;
+            pos.x += g.slopeSpeed;
         }
     }
 

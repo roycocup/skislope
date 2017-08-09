@@ -26,6 +26,8 @@ public class Ski extends ApplicationAdapter {
 	
 	Player player;
 	Slope slope;
+
+	int slopeSpeed = 3;
 	
 	void init(){
 		Gdx.graphics.setTitle("Ski Slow Down");
@@ -89,13 +91,12 @@ public class Ski extends ApplicationAdapter {
 	}
 
 	void cameraMovementsListener(){
-        int speed = 5;
 
         if(Gdx.input.isKeyPressed(Input.Keys.DOWN)){
-            moveCamera(0,speed);
+            moveCamera(0,-slopeSpeed);
         }
         if(Gdx.input.isKeyPressed(Input.Keys.UP)){
-            moveCamera(0,-speed);
+            moveCamera(0,slopeSpeed);
         }
 
     }

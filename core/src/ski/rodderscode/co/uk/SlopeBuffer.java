@@ -2,6 +2,7 @@ package ski.rodderscode.co.uk;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Cursor;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -28,18 +29,25 @@ public class SlopeBuffer extends Actor {
         Random rand = new Random();
 
         // trees
-        for (int i = 0; i < rand.nextInt(10) + 1; i++) {
+        for (int i = 0; i < 10 + 1; i++) {
             Tree t = new Tree(g, Tree.Type.tree1);
-            t.pos.x = rand.nextInt(Gdx.graphics.getWidth() - 1);
-            t.pos.y = rand.nextInt(Gdx.graphics.getHeight() - 1);
+            t.pos.x = rand.nextInt(Gdx.graphics.getWidth()) + 1;
+
+            int rndY = (int) Math.abs( (pos.y - height) );
+
+            if (pos.y < 0) {
+                t.pos.y = -1 * rand.nextInt(rndY);
+            } else {
+                if (rndY == 0) rndY = 1;
+                t.pos.y = rand.nextInt(rndY);
+            }
+
             trees.add(t);
         }
     }
 
     @Override
-    public void act(float delta){
-
-    }
+    public void act(float delta){}
 
     @Override
     public void draw(Batch batch, float alpha) {
